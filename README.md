@@ -25,9 +25,9 @@ It also contains two 'bonus' features:
 
 # Running
 download binary for your system:
-- linux: `wget https://github.com/ricardo-ch/go-kafka-connect/releases/download/1.0.0/kccli`
-- windows: `wget https://github.com/ricardo-ch/go-kafka-connect/releases/download/1.0.0/kccli.exe`
-- mac: `wget https://github.com/ricardo-ch/go-kafka-connect/releases/download/1.0.0/kccli_mac`
+- linux: `wget https://github.com/roarvroom/go-kafka-connect/releases/download/1.0.0/kccli`
+- windows: `wget https://github.com/roarvroom/go-kafka-connect/releases/download/1.0.0/kccli.exe`
+- mac: `wget https://github.com/roarvroom/go-kafka-connect/releases/download/1.0.0/kccli_mac`
 
 set executable if needed
 `chmod +x kccli`
@@ -77,7 +77,7 @@ Required:
  - Go 1.9
  - Docker (for testing purpose only)
 
-run `go get -u github.com/ricardo-ch/go-kafka-connect`
+run `go get -u github.com/roarvroom/go-kafka-connect`
 then inside repo run: `make install` to install dependencies
 
 

@@ -58,6 +58,8 @@ func Execute() {
 }
 
 func init() {
+	// validate config
+
 	RootCmd.PersistentFlags().StringVarP(&url, "url", "u", "http://localhost:8083", "kafka connect URL")
 	RootCmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, `/!\ very verbose`)
 	RootCmd.PersistentFlags().BoolVarP(&SSLInsecure, "insecure-skip-verify", "i", false, `skip SSL/TLS verification`)

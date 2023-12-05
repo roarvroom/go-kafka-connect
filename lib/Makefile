@@ -19,7 +19,8 @@ rundep:
 	done
 	@echo "up and running"
 
-MOCKERY_PATH :=  $(shell  [ -z "$${GOBIN}" ] && echo $${GOPATH}/bin/mockery ||  echo $${GOBIN}/mockery; )
+#MOCKERY_PATH :=  $(shell  [ -z "$${GOBIN}" ] && echo $${GOPATH}/bin/mockery ||  echo $${GOBIN}/mockery; )
+MOCKERY_PATH:=/opt/homebrew/bin/mockery
 
 .PHONY: update-mocks
 update-mocks:
