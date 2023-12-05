@@ -24,7 +24,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/roarvroom/go-kafka-connect/v3/lib/connectors"
+	"github.com/roarvroom/go-kafka-connect/lib/connectors"
 	"github.com/spf13/cobra"
 )
 
@@ -35,7 +35,7 @@ var createCmd = &cobra.Command{
 	RunE:  RunECreate,
 }
 
-//RunECreate ...
+// RunECreate ...
 func RunECreate(cmd *cobra.Command, args []string) error {
 	configs, err := getCreateCmdConfig(cmd)
 	if err != nil {

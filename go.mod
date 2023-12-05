@@ -1,4 +1,4 @@
-module github.com/roarvroom/go-kafka-connect/v3
+module github.com/roarvroom/go-kafka-connect
 
 go 1.21
 
@@ -6,7 +6,6 @@ require (
 	bou.ke/monkey v1.0.1
 	github.com/hashicorp/go-multierror v1.0.0
 	github.com/pkg/errors v0.8.1
-	github.com/roarvroom/go-kafka-connect/v3 v3.0.0-20221117134721-e033f95963cb
 	github.com/spf13/cobra v0.0.1
 	github.com/stretchr/testify v1.2.2
 	gopkg.in/jarcoal/httpmock.v1 v1.0.0-20181117152235-275e9df93516

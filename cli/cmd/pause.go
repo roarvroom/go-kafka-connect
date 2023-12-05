@@ -15,7 +15,7 @@
 package cmd
 
 import (
-	"github.com/roarvroom/go-kafka-connect/v3/lib/connectors"
+	"github.com/roarvroom/go-kafka-connect/lib/connectors"
 	"github.com/spf13/cobra"
 )
 
@@ -26,7 +26,7 @@ var pauseCmd = &cobra.Command{
 	RunE:  RunEPause,
 }
 
-//RunEPause ...
+// RunEPause ...
 func RunEPause(cmd *cobra.Command, args []string) error {
 	req := connectors.ConnectorRequest{
 		Name: connector,
