@@ -283,7 +283,6 @@ func (c *baseClient) ValidateConnectorConfig(connectorClass string, config map[s
 	if err != nil {
 		return ValidateConnectorConfigResponse{}, err
 	}
-	fmt.Println(resp)
 	result.Code = resp.StatusCode()
 	return result, nil
 }
