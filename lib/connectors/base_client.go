@@ -26,7 +26,7 @@ type BaseClient interface {
 	GetAllTasks(req ConnectorRequest) (GetAllTasksResponse, error)
 	GetTaskStatus(req TaskRequest) (TaskStatusResponse, error)
 	RestartTask(req TaskRequest) (EmptyResponse, error)
-	ValidateConnectorConfig(string, map[string]interface{}) (ValidateConnectorConfigResponse, error)
+	ValidateConnectorConfig(string, map[string]string) (ValidateConnectorConfigResponse, error)
 
 	SetInsecureSSL()
 	SetDebug()
@@ -274,7 +274,7 @@ func (c *baseClient) GetConnectorConfig(req ConnectorRequest) (GetConnectorConfi
 	return result, nil
 }
 
-func (c *baseClient) ValidateConnectorConfig(connectorClass string, config map[string]interface{}) (ValidateConnectorConfigResponse, error) {
+func (c *baseClient) ValidateConnectorConfig(connectorClass string, config map[string]string) (ValidateConnectorConfigResponse, error) {
 	result := ValidateConnectorConfigResponse{}
 	resp, err := c.restClient.NewRequest().
 		SetResult(&result).
