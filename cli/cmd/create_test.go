@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/roarvroom/go-kafka-connect/lib/connectors"
+	"github.com/audi-adp/go-kafka-connect/lib/connectors"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -24,7 +24,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/roarvroom/go-kafka-connect/lib/connectors"
+	"github.com/audi-adp/go-kafka-connect/lib/connectors"
 	"github.com/spf13/cobra"
 )
 

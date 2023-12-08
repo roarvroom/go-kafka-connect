@@ -1,4 +1,4 @@
-module github.com/roarvroom/go-kafka-connect
+module github.com/audi-adp/go-kafka-connect
 
 go 1.21
 

@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/roarvroom/go-kafka-connect/lib/connectors"
+	"github.com/audi-adp/go-kafka-connect/lib/connectors"
 )
 
 func printResponse(response interface{}) error {
