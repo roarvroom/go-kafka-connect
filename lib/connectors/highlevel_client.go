@@ -26,7 +26,7 @@ type HighLevelClient interface {
 	GetAllTasks(req ConnectorRequest) (GetAllTasksResponse, error)
 	GetTaskStatus(req TaskRequest) (TaskStatusResponse, error)
 	RestartTask(req TaskRequest) (EmptyResponse, error)
-	ValidateConnectorConfig(string, map[string]string) (ValidateConnectorConfigResponse, error)
+	ValidateConnectorConfig(req ValidateConnectorConfigRequest) (ValidateConnectorConfigResponse, error)
 	// custom features, mostly composition of previous ones
 	IsUpToDate(connector string, config map[string]interface{}) (bool, error)
 	DeployConnector(req CreateConnectorRequest) (err error)
@@ -80,8 +80,8 @@ func (c *highLevelClient) GetAll() (GetAllConnectorsResponse, error) {
 	return c.client.GetAll()
 }
 
-func (c *highLevelClient) ValidateConnectorConfig(connectorClass string, config map[string]string) (ValidateConnectorConfigResponse, error) {
-	return c.client.ValidateConnectorConfig(connectorClass, config)
+func (c *highLevelClient) ValidateConnectorConfig(req ValidateConnectorConfigRequest) (ValidateConnectorConfigResponse, error) {
+	return c.client.ValidateConnectorConfig(req)
 }
 
 // GetConnector return information on specific connector

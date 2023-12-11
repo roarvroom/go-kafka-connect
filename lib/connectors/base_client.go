@@ -4,6 +4,7 @@ import (
 	"crypto/tls"
 	"fmt"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/pkg/errors"
@@ -26,7 +27,7 @@ type BaseClient interface {
 	GetAllTasks(req ConnectorRequest) (GetAllTasksResponse, error)
 	GetTaskStatus(req TaskRequest) (TaskStatusResponse, error)
 	RestartTask(req TaskRequest) (EmptyResponse, error)
-	ValidateConnectorConfig(string, map[string]string) (ValidateConnectorConfigResponse, error)
+	ValidateConnectorConfig(req ValidateConnectorConfigRequest) (ValidateConnectorConfigResponse, error)
 
 	SetInsecureSSL()
 	SetDebug()
@@ -274,11 +275,13 @@ func (c *baseClient) GetConnectorConfig(req ConnectorRequest) (GetConnectorConfi
 	return result, nil
 }
 
-func (c *baseClient) ValidateConnectorConfig(connectorClass string, config map[string]string) (ValidateConnectorConfigResponse, error) {
+func (c *baseClient) ValidateConnectorConfig(req ValidateConnectorConfigRequest) (ValidateConnectorConfigResponse, error) {
 	result := ValidateConnectorConfigResponse{}
+	parts := strings.Split(req.Config["connector.class"].(string), ".")
+	connectorClass := parts[len(parts)-1]
 	resp, err := c.restClient.NewRequest().
 		SetResult(&result).
-		SetBody(config).
+		SetBody(req.Config).
 		Put("connector-plugins/" + connectorClass + "/config/validate")
 	if err != nil {
 		return ValidateConnectorConfigResponse{}, err

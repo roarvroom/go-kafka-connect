@@ -410,9 +410,9 @@ func (_m *MockBaseClient) UpdateConnector(req CreateConnectorRequest) (Connector
 	return r0, r1
 }
 
-// ValidateConnectorConfig provides a mock function with given fields: connectorClass, config
-func (_m *MockBaseClient) ValidateConnectorConfig(connectorClass string, config string) (ValidateConnectorConfigResponse, error) {
-	ret := _m.Called(connectorClass, config)
+// ValidateConnectorConfig provides a mock function with given fields: req
+func (_m *MockBaseClient) ValidateConnectorConfig(req ValidateConnectorConfigRequest) (ValidateConnectorConfigResponse, error) {
+	ret := _m.Called(req)
 
 	if len(ret) == 0 {
 		panic("no return value specified for ValidateConnectorConfig")
@@ -420,17 +420,17 @@ func (_m *MockBaseClient) ValidateConnectorConfig(connectorClass string, config 
 
 	var r0 ValidateConnectorConfigResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(string, string) (ValidateConnectorConfigResponse, error)); ok {
-		return rf(connectorClass, config)
+	if rf, ok := ret.Get(0).(func(ValidateConnectorConfigRequest) (ValidateConnectorConfigResponse, error)); ok {
+		return rf(req)
 	}
-	if rf, ok := ret.Get(0).(func(string, string) ValidateConnectorConfigResponse); ok {
-		r0 = rf(connectorClass, config)
+	if rf, ok := ret.Get(0).(func(ValidateConnectorConfigRequest) ValidateConnectorConfigResponse); ok {
+		r0 = rf(req)
 	} else {
 		r0 = ret.Get(0).(ValidateConnectorConfigResponse)
 	}
 
-	if rf, ok := ret.Get(1).(func(string, string) error); ok {
-		r1 = rf(connectorClass, config)
+	if rf, ok := ret.Get(1).(func(ValidateConnectorConfigRequest) error); ok {
+		r1 = rf(req)
 	} else {
 		r1 = ret.Error(1)
 	}

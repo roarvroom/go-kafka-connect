@@ -479,6 +479,34 @@ func (_m *MockHighLevelClient) UpdateConnector(req CreateConnectorRequest, sync 
 	return r0, r1
 }
 
+// ValidateConnectorConfig provides a mock function with given fields: req
+func (_m *MockHighLevelClient) ValidateConnectorConfig(req ValidateConnectorConfigRequest) (ValidateConnectorConfigResponse, error) {
+	ret := _m.Called(req)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ValidateConnectorConfig")
+	}
+
+	var r0 ValidateConnectorConfigResponse
+	var r1 error
+	if rf, ok := ret.Get(0).(func(ValidateConnectorConfigRequest) (ValidateConnectorConfigResponse, error)); ok {
+		return rf(req)
+	}
+	if rf, ok := ret.Get(0).(func(ValidateConnectorConfigRequest) ValidateConnectorConfigResponse); ok {
+		r0 = rf(req)
+	} else {
+		r0 = ret.Get(0).(ValidateConnectorConfigResponse)
+	}
+
+	if rf, ok := ret.Get(1).(func(ValidateConnectorConfigRequest) error); ok {
+		r1 = rf(req)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // NewMockHighLevelClient creates a new instance of MockHighLevelClient. It also registers a testing interface on the mock and a cleanup function to assert the mocks expectations.
 // The first argument is typically a *testing.T value.
 func NewMockHighLevelClient(t interface {
