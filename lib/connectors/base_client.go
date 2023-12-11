@@ -2,6 +2,7 @@ package connectors
 
 import (
 	"crypto/tls"
+	"encoding/json"
 	"fmt"
 	"strconv"
 	"strings"
@@ -283,6 +284,23 @@ func (c *baseClient) ValidateConnectorConfig(req ValidateConnectorConfigRequest)
 		SetResult(&result).
 		SetBody(req.Config).
 		Put("connector-plugins/" + connectorClass + "/config/validate")
+	if err != nil {
+		return ValidateConnectorConfigResponse{}, err
+	}
+	if resp.StatusCode() != 200 {
+		type ErrorResponse struct {
+			ErrorCode int    `json:"error_code,omitempty"`
+			Message   string `json:"message,omitempty"`
+		}
+		errorResponse := ErrorResponse{}
+		// unmarshal resp.Body to errorResponse
+		err := json.Unmarshal(resp.Body(), &errorResponse)
+		if err != nil {
+			return ValidateConnectorConfigResponse{}, err
+		}
+		return ValidateConnectorConfigResponse{}, errors.Errorf("Validate connector config failed: %v", errorResponse.Message)
+	}
+	err = json.Unmarshal(resp.Body(), &result)
 	if err != nil {
 		return ValidateConnectorConfigResponse{}, err
 	}
